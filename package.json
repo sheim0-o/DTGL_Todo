@@ -3,20 +3,26 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "config": {
+    "com": "5000"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
 
-    "deploy": "npm run commit && npm run build && npm run docker",
-    "commit": "git add . && git commit -m \"$(npm run prompt:commit-message)\"",
-    "prompt:commit-message": "read -p \"Введите название коммита: \" commit_message && echo $commit_message",
-    "docker": "docker build -t dtgl_test_todo . && docker push dtgl_test_todo"
+    "deploy": "npm run git-commit --name=%npm_config_name%",
+
+    "build": "tsc && vite build",
+    
+    "docker": "docker build --rm --pull -t dtgl_test_todo .",
+    
+    "git-commit": "git add . && git commit -m %npm_config_name%"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "read": "^3.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
