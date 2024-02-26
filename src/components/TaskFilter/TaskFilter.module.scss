@@ -1,0 +1,59 @@
+.filter-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.filter-block > * {
+  height: 40px;
+}
+
+.filter-block__status-hint {
+  color: var(--main-m);
+  width: 120px;
+  vertical-align: bottom;
+  padding-top: 8px;
+  box-sizing: border-box;
+}
+
+.filter-block__status {
+  position: relative;
+
+  input[type='radio'] {
+    appearance: none;
+  }
+  label {
+    color: var(--main-h);
+    font-weight: normal;
+
+    &:before {
+      content: ' ';
+      display: inline-block;
+      position: relative;
+      top: 5px;
+      margin: 0 5px 0 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 11px;
+      border: 2px solid var(--second-h);
+      background-color: transparent;
+    }
+  }
+  input[type='radio']:checked + label:after {
+    border-radius: 12px;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 11px;
+    left: 14px;
+    content: ' ';
+    display: block;
+    background: var(--second-h);
+  }
+}

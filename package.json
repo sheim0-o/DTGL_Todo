@@ -10,16 +10,14 @@
     "dev": "vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-
-    "deploy": "npm run git-commit --name=%npm_config_name%",
-
+    "deploy": "npm run build && npm run docker && npm run commit --name=%npm_config_name%",
     "build": "tsc && vite build",
-    
     "docker": "docker build --rm --pull -t dtgl_test_todo .",
-    
-    "git-commit": "git add . && git commit -m %npm_config_name%"
+    "commit": "git add . && git commit -m %npm_config_name%"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.1",
+    "@types/react-redux": "^7.1.33",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "read": "^3.0.1"
@@ -33,6 +31,9 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "react-redux": "^9.1.0",
+    "redux": "^5.0.1",
+    "sass": "^1.71.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
   }
